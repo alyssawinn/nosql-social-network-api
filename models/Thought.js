@@ -6,7 +6,8 @@ const ThoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
-        validate: [({ length }) => length >= 1 && length <= 280]
+        minLength: 1,
+        maxLength: 280
     },
     createdAt: {
         type: Date,
@@ -28,9 +29,9 @@ const ThoughtSchema = new Schema({
     }
 );
 
-/* ThoughtSchema.virtual('reactionCount').get(function () {
-    return this.thoughts.reduce((total, thought) => total + thought.reactions.length + 1, 0);
-}) */
+ThoughtSchema.virtual('reactionCount').get(function () {
+    return this.reactions.length
+})
 
 const Thought = model('Thought', ThoughtSchema);
 
