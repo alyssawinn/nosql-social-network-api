@@ -9,7 +9,6 @@ const {
     addFriend,
     deleteFriend
 } = require('../../controllers/user-controller');
-const { add } = require('../../models/Reaction');
 
 router
     .route('/')
